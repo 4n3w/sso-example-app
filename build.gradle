@@ -8,14 +8,19 @@ plugins {
     id 'java'
     id 'org.springframework.boot' version '2.7.0'
     id 'io.spring.dependency-management' version '1.1.0'
+
 }
 
-group = 'com.auth0'
+group = 'com.vmware.cssa.'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '1.8'
+sourceCompatibility = '17'
 
 repositories {
     mavenCentral()
+}
+
+ext {
+    cfEnvSsoVersion = '2.2.2.RELEASE'
 }
 
 dependencies {
@@ -25,4 +30,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
     implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
+    implementation 'io.pivotal.cfenv:java-cfenv-boot:2.4.1'
+    implementation 'io.pivotal.cfenv:java-cfenv-boot-pivotal-sso:2.4.1'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
 }

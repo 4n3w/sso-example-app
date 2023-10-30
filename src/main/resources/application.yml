@@ -1,25 +1,32 @@
-server:
-  port: 3000
-
+##server:
+##  port: 3000
+#
 logging:
   level:
     root: ERROR
     org.springframework.web: ERROR
     com.auth0.example: TRACE
+#
+org:
+  springframework:
+    cloud:
+      bindings:
+        boot:
+          oauth2:
+            enable: true
 
-spring:
-  security:
-    oauth2:
-      client:
-        registration:
-          auth0:
-            client-id: <redacted>
-            client-secret: <redacted>
-            scope:
-              - openid
-              - profile
-              - email
-        provider:
-          auth0:
-            # trailing slash is important!
-            issuer-uri: https://<redacted>.us.auth0.com/
+#spring:
+#  security:
+#    oauth2:
+#      client:
+#        registration:
+#          auth0:
+#            client-id: <redacted>
+#            client-secret: <redacted>>
+#            scope:
+#              - openid
+#              - profile
+#              - email
+#        provider:
+#          auth0:
+#            issuer-uri: https://dev-<redacted>.us.auth0.com/

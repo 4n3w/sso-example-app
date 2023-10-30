@@ -19,7 +19,7 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 // allow all users to access the home pages and the static images directory
-                .mvcMatchers("/", "/images/**").permitAll()
+                .mvcMatchers("/", "/images/**", "/actuator/**").permitAll()
                 // all other requests must be authenticated
                 .anyRequest().authenticated()
                 .and().oauth2Login()
@@ -27,7 +27,7 @@ public class SecurityConfig {
                 // handle logout requests at /logout path
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 // customize logout handler to log out of Auth0
-                .addLogoutHandler(logoutHandler);
+                .addLogoutHandler(logoutHandler);// This line makes actuator endpoints public;
         return http.build();
     }
 

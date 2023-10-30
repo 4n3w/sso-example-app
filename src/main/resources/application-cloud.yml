@@ -1,6 +1,34 @@
+##server:
+##  port: 3000
+#
+debug: true
+
 logging:
   level:
     root: ERROR
-    org.springframework.web: ERROR
     com.auth0.example: TRACE
+    org.springframework.security: DEBUG
+    org.springframework.web: DEBUG
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: env,info,health
+
+#
+org:
+  springframework:
+    cloud:
+      bindings:
+        boot:
+          oauth2:
+            enable: true
+
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          sso:
+            scope: "openid,profile,roles,user_attributes"

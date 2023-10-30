@@ -30,6 +30,7 @@ public class ProfileController {
         return "profile";
     }
 
+    @SuppressWarnings("SpringConfigurationProxyMethods")
     private String claimsToJson(Map<String, Object> claims) {
         try {
             return objectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(claims);

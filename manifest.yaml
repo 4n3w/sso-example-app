@@ -1,10 +1,11 @@
 applications:
-  - name: cf-app-sso-auth-zero
+  - name: app-sso-fun
     path: ./build/libs/mvc-login-0.0.1-SNAPSHOT.jar
     services:
       - auth-zero
     buildpacks:
       - java_buildpack_offline
     env:
+      SPRING_PROFILES_ACTIVE: cloud
       JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 17.+ } }'
-
+      SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_SSO_SCOPE: "openid,profile,roles"
